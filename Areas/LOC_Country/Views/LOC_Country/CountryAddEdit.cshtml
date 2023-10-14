@@ -1,0 +1,33 @@
+﻿@using System.Data;
+@{
+    ViewData["Title"] = "Country Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model Admin_Panel.Areas.LOC_Country.Models.LOC_CountryModel;
+@using System.Data;
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">Country Details</h5>
+
+        <!-- Multi Columns Form -->
+        <form class="row g-3" asp-action="AddEditMethod" asp-controller="LOC_Country" method="post">
+            @Html.HiddenFor(X=>X.CountryID)
+            <div class="col-md-12">
+                <label for="inputName5" class="form-label">Country Name</label>
+                <input type="text" asp-for="CountryName" class="form-control" id="inputName5">
+                <span asp-validation-for="CountryName" class="text-danger"></span>
+            </div>
+            <div class="col-md-12">
+                <label for="inputName5" class="form-label">Country Code</label>
+                <input type="text" asp-for="CountryCode" class="form-control" id="inputName5">
+                <span asp-validation-for="CountryName" class="text-danger"></span>
+            </div>
+
+            <div>
+                <input type="submit" class="btn btn-primary"></input>
+                <a class="btn btn-secondary" asp-area="LOC_Country" asp-controller="LOC_Country" asp-action="CountryList">Cancel</a>
+            </div>
+        </form><!-- End Multi Columns Form -->
+
+    </div>
+</div>

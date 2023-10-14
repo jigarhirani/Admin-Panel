@@ -1,0 +1,33 @@
+﻿@using System.Data;
+@{
+    ViewData["Title"] = "Country Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model Admin_Panel.Areas.MST_Branch.Models.MST_BranchModel;
+@using System.Data;
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">Branch Details</h5>
+
+        <!-- Multi Columns Form -->
+        <form class="row g-3" asp-action="AddEditMethod" asp-controller="MST_Branch" method="post">
+            @Html.HiddenFor(X=>X.BranchID)
+            <div class="col-md-12">
+                <label for="inputName5" class="form-label">Branch Name</label>
+                <input type="text" asp-for="BranchName" class="form-control" id="inputName5">
+                <span asp-validation-for="BranchName" class="text-danger"></span>
+            </div>
+            <div class="col-md-12">
+                <label for="inputName5" class="form-label">Branch Code</label>
+                <input type="text" asp-for="BranchCode" class="form-control" id="inputName5">
+                <span asp-validation-for="BranchName" class="text-danger"></span>
+            </div>
+
+            <div>
+                <input type="submit" class="btn btn-primary"></input>
+                <a class="btn btn-secondary" asp-area="MST_Branch" asp-controller="MST_Branch" asp-action="BranchList">Cancel</a>
+            </div>
+        </form><!-- End Multi Columns Form -->
+
+    </div>
+</div>

@@ -1,0 +1,40 @@
+﻿@using System.Data;
+@{
+    ViewData["Title"] = "State Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model Admin_Panel.Areas.LOC_State.Models.LOC_StateModel;
+@using System.Data;
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">State Details</h5>
+
+        <!-- Multi Columns Form -->
+        <form class="row g-3" asp-action="AddEditMethod" asp-controller="LOC_State" method="post">
+            @Html.HiddenFor(X=>X.StateID)
+            <div class="col-md-4">
+                <label for="inputState" class="form-label">Select Country</label>
+                <select class="form-select" asp-for="CountryID" asp-items="@(new SelectList(ViewBag.CountryList,"CountryID","CountryName"))">                        >
+                    <option value="" selected disabled>Select Country</option>
+                </select>
+                <span asp-validation-for="CountryID" class="text-danger"></span>
+            </div>
+            <div class="col-md-12">
+                <label for="inputName5" class="form-label">State Name</label>
+                <input type="text" asp-for="StateName" class="form-control" id="inputName5">
+                <span asp-validation-for="StateName" class="text-danger"></span>
+            </div>
+            <div class="col-md-12">
+                <label for="inputName5" class="form-label">State Code</label>
+                <input type="text" asp-for="StateCode" class="form-control" id="inputName5">
+                <span asp-validation-for="StateName" class="text-danger"></span>
+            </div>
+
+            <div>
+                <input type="submit" class="btn btn-primary"></input>
+                <a class="btn btn-secondary" asp-area="LOC_State" asp-controller="LOC_State" asp-action="StateList">Cancel</a>
+            </div>
+        </form><!-- End Multi Columns Form -->
+
+    </div>
+</div>

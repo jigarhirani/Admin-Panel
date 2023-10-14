@@ -1,0 +1,96 @@
+﻿@using System.Data;
+@{
+    ViewData["Title"] = "Country Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model Admin_Panel.Areas.MST_Student.Models.MST_StudentModel;
+@using System.Data;
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">Student Details</h5>
+
+        <!-- Multi Columns Form -->
+        <form class="row g-3" asp-action="AddEditMethod" asp-controller="MST_Student" method="post">
+            @Html.HiddenFor(X=>X.StudentID)
+            <div class="col-md-12">
+                <label for="inputName5" class="form-label">Your Name</label>
+                <input type="text" asp-for="StudentName" class="form-control" id="inputName5">
+                <span asp-validation-for="StudentName" class="text-danger"></span>
+            </div>
+            <div class="col-md-6">
+                <label for="inputEmail5" class="form-label">Email</label>
+                <input type="email" asp-for="Email" class="form-control" id="inputEmail5">
+                <span asp-validation-for="Email"></span>
+            </div>
+            <div class="col-md-6">
+                <label for="inputPassword5" class="form-label">Password</label>
+                <input type="password" asp-for="Password" class="form-control" id="inputPassword5">
+                <span asp-validation-for="Address" class="text-danger"></span>
+            </div>
+            <div class="col-12">
+                <label for="inputAddress5" class="form-label">Address</label>
+                <textarea class="form-control" asp-for="Address" rows="3" type="text" placeholder="1234 Main St" asp-for="Address"></textarea>
+                <span asp-validation-for="Address" class="text-danger"></span>
+            </div>
+            <div class="col-md-4">
+                <label for="inputState" class="form-label">Gender</label>
+                <select id="inputState" asp-for="Gender" class="form-select">
+                    <option selected>Choose Gender...</option>
+                    <option>Male</option>
+                    <option>Female</option>
+                </select>
+                <span asp-validation-for="Gender" class="text-danger"></span>
+            </div>
+            <div class="col-md-4">
+                <label for="inputState" class="form-label">Select Branch</label>
+                <select class="form-select" asp-for="BranchID"
+                        asp-items="@(new SelectList(ViewBag.BranchList,"BranchID","BranchName"))">
+
+                    <option disabled selected>Select Branch</option>
+                </select>
+                <span asp-validation-for="BranchID" class="text-danger"></span>
+            </div>
+            <div class="col-md-4">
+                <label for="inputState" class="form-label">Select City</label>
+                <select class="form-select" asp-for="CityID" asp-items="@(new SelectList(ViewBag.CityList,"CityID","CityName"))">
+                    <option value="" selected disabled>Select City</option>
+                </select>
+                <span asp-validation-for="CityID" class="text-danger"></span>
+            </div>
+            <div class="col-md-6">
+                <label for="inputName5" class="form-label">Your Mobile Number</label>
+                <input type="text" asp-for="MobileNoStudent" class="form-control" id="inputName5">
+                <span asp-validation-for="MobileNoStudent" class="text-danger"></span>
+            </div>
+            <div class="col-md-6">
+                <label for="inputName5" class="form-label">Father Mobile Number</label>
+                <input type="text" asp-for="MobileNoFather" class="form-control" id="inputName5">
+                <span asp-validation-for="MobileNoFather" class="text-danger"></span>
+            </div>
+            <div class="col-md-4">
+                <label for="inputName5" class="form-label">Birth Date:</label>
+                <input type="date" class="form-control" asp-for="BirthDate" name="birthdate">
+                <span asp-validation-for="BirthDate" class="text-danger"></span>
+            </div>
+            <div class="col-md-4">
+                <label for="inputState" class="form-label">Is Active</label>
+                <select asp-for="IsActive" id="inputState" class="form-select">
+                    <option selected>Select Student Stetus...</option>
+                    <option>True</option>
+                    <option>False</option>
+                </select>
+                <span asp-validation-for="IsActive" class="text-danger"></span>
+            </div>
+            <div class="col-md-4">
+                <label for="inputName5" class="form-label">Age</label>
+                <input type="text" asp-for="Age" class="form-control" id="inputName5">
+                <span asp-validation-for="Age" class="text-danger"></span>
+            </div>
+            <div>
+                <input type="submit" class="btn btn-primary"></input>
+                <a class="btn btn-secondary" asp-area="MST_Student" asp-controller="MST_Student" asp-action="StudentList">Cancel</a>
+            </div>
+        </form><!-- End Multi Columns Form -->
+
+    </div>
+</div>
